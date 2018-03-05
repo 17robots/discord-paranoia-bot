@@ -5,6 +5,8 @@ var help = require("./help.js");
 var personOrder = [];
 var inProgress = false;
 
+
+
 function parsemsg(msg) {
     if (msg.content.toLowerCase().substr(0,1) !== "!") {
         return;
@@ -35,19 +37,31 @@ function parsemsg(msg) {
                 msgObj.reply("There is already a game in play please wait till that one finishes");
             } else {
                 inProgress = true;
+
+                //create the player order
+                for(var i = 0; i < client.users.length; i++) {
+                    
+                }
             }
             break;
         case "order":
-            msgObj.reply("order does not work just yet please hold on");
+            // msgObj.reply("order does not work just yet please hold on");
+            if(inProgress) {
+                var returnString = `the player order is as follows: ` + personOrder[0].username;
+                for (var i = 0; i < personOrder.length; i++) {
+                    returnString += (' -> ' + personOrder[i].username);
+                }
+                msgObj.reply(returnString);
+            } else {
+                msgObj.reply('There is currently no match going on. You can start one by typing \"!match.\"');
+            }
             break;
         case "question":
             msgObj.reply("question does not work just yet please hold on");
             break;
         case "specify":
             msgObj.reply("specify does not work just yet please hold on");
-            break;
-        case "clear":
-            
+            break; 
     }
 }
 
