@@ -40,7 +40,7 @@ function parsemsg(msg) {
 
                 //create the player order
                 for(var i = 0; i < client.users.length; i++) {
-                    
+
                 }
             }
             break;
@@ -64,7 +64,7 @@ function parsemsg(msg) {
             break; 
     }
 }
-
+//  i like cats?
 function handlemsg(msg) {
     try {
         parsemsg(msg);
