@@ -1,4 +1,4 @@
-const token = "NDE5OTgwMzE3MjE0OTAwMjM5.DX4A9A.EagPnrwG6JrFZhmfLdJVMswUIwk";
+const token = "Screw off my discord bot bitch";
 var client = new(require("discord.js")).Client();
 var help = require("./help.js");
 
