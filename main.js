@@ -58,18 +58,19 @@ function parsemsg(msg) {
                     personOrder[i] = players[personOrder[i]];
                 }
 
-                var index;
+                var index = [];
 
                 // remove the botplayer
-                for (p in personOrder) {
-                    if (p.username === "paranoia-bot") {
-                        index = bot;
+                for (var i = 0; i < personOrder.length; i++) {
+                    if (personOrder[i].username == "paranoia-bot" || personOrder[i].username == "Clyde") {
+                        index.push(personOrder[i]);
                     }
                 }
-
-                personOrder.filter(function(i) {
-                    return i.username != "paranoia-bot";
-                });
+                
+                //actually remove bots
+                for (var i = 0; i < index.length; i++) {
+                    personOrder.splice(personOrder.indexOf(index[i]),1);
+                }
 
                 msgObj.reply('Created player order');
             }
@@ -109,7 +110,9 @@ function handlemsg(msg) {
 }
 
 client.on("message", (msg) => {
-    handlemsg(msg);
+    if(msg.author.id !== client.user.id) {
+        handlemsg(msg);
+    }
 });
 
 client.on("messageUpdate", (omsg, nmsg) => {
